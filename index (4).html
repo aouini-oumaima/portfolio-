@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oumaima Aouini - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-950 text-gray-100 font-roboto-mono">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const projects = [
+      {
+        title: "MyFitness Mobile Application",
+        date: "May 2023",
+        description: [
+          "Developed a cross-platform fitness mobile application using React Native and Expo.",
+          "Implemented secure user authentication with Firebase, real-time chat functionality using Socket.IO, and image storage with Cloudinary.",
+        ],
+        technologies: ["React Native", "Expo", "Firebase", "Socket.IO", "Cloudinary"],
+        demoLink: "./assets/video2.mp4",
+        demoImage: "./assets/images/fitn.jpg"
+      },
+      {
+        title: "Pet Store Website",
+        date: "October 2024",
+        description: [
+          "Designed and developed a responsive e-commerce website for a pet store using jQuery, JavaScript, and Bootstrap.",
+          "Implemented product filtering, a shopping cart, and dynamic product displays with jQuery for enhanced interactivity.",
+          "Integrated Bootstrap for responsive design and user-friendly navigation.",
+        ],
+        technologies: ["jQuery", "JavaScript", "Bootstrap", "HTML", "CSS"],
+        demoLink: "./assets/video3.mp4",
+        demoImage: "./assets/images/paws.jpg"
+      },
+      {
+  title: "React Native Mobile App",
+  date: "July 2025",
+  description: [
+    "Created a mobile app with React Native (Expo), connected to a MongoDB database through an Express.js backend.",
+    "Used Axios for API requests, CSS for styling, and React animations for smooth transitions."
+  ],
+  technologies: ["React Native", "Expo", "MongoDB", "Express.js", "Axios", "CSS", "React Animations"],
+  demoLink: "./assets/video 5 .mp4",
+  demoImage: "./assets/images/icss.png" // create or add a thumbnail image for your video
+},
+      {
+        title: "French Tacos Website",
+        date: "july 2025",
+        description: [
+          "Created a responsive website for a restaurant using HTML, Tailwind CSS, and JavaScript.",
+          "Integrated Google Maps for location services, an image-based menu, and social media links for enhanced user engagement.",
+        ],
+        technologies: ["HTML", "Tailwind CSS", "JavaScript", "Google Maps API"],
+        demoLink: "./assets/video1.mp4",
+        demoImage: "./assets/images/tacos.jpg"
+      },
+      {
+        title: "Aphrodite E-commerce Website",
+        date: "June 2023",
+        description: [
+          "Built a responsive e-commerce platform with a modern user interface using Tailwind CSS.",
+          "Integrated shopping cart, wishlist, email notifications with Email.js, secure JWT authentication, and payment processing with Stripe.",
+          "Managed image hosting via Cloudinary for optimized performance.",
+        ],
+        technologies: ["Tailwind CSS", "JavaScript", "Email.js", "JWT", "Stripe", "Cloudinary"],
+        demoLink: "https://aphrodite-demo.com",
+        demoImage: "./assets/images/aphr.jpg"
+      },
+      {
+        title: "Travel Journal Website",
+        date: "October 2023",
+        description: [
+          "Developed a dynamic travel blogging platform with React Router for seamless navigation and JWT for secure user access.",
+          "Ensured responsive design and optimized user experience.",
+        ],
+        technologies: ["React", "React Router", "JWT", "JavaScript"],
+        demoLink: "./assets/video4.mp4",
+        demoImage: "./assets/images/trav.png"
+      },
+    ];
+
+    const figmaProjects = [
+      {
+        title: "Mobile App UI Design",
+        date: "January 2024",
+        description: "Designed a user-friendly mobile app interface for a fitness tracking application with a focus on clean aesthetics and intuitive navigation.",
+        screenshot: "./assets/images/figma.png",
+        figmaLink: "https://www.figma.com/file/sample-fitness-app"
+      },
+      {
+        title: "E-commerce Website Mockup",
+        date: "March 2024",
+        description: "Created a high-fidelity mockup for an e-commerce platform, emphasizing responsive design and modern UI/UX principles.",
+        screenshot: "./assets/images/figma2.png",
+        figmaLink: "https://www.figma.com/file/sample-ecommerce"
+      },
+    ];
+
+    const skills = {
+      Frontend: [
+        { name: "HTML", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg" },
+        { name: "CSS", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/css3.svg" },
+        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" },
+        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/typescript.svg" },
+        { name: "React", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg" },
+        { name: "Next.js", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg" },
+        { name: "Angular", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/angular.svg" },
+        { name: "Vue.js", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vuedotjs.svg" },
+        { name: "jQuery", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jquery.svg" },
+        { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg" },
+        { name: "Bootstrap", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bootstrap.svg" },
+      ],
+      Backend: [
+        { name: "Node.js", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nodedotjs.svg" },
+        { name: "Express.js", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/express.svg" },
+      ],
+      Databases: [
+        { name: "MySQL", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" },
+        { name: "SQLite", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sqlite.svg" },
+        { name: "MongoDB", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg" },
+        { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" },
+      ],
+      ORM: [
+        { name: "Prisma", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prisma.svg" },
+        { name: "Sequelize", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sequelize.svg" },
+        { name: "Mongoose", logo: "https://raw.githubusercontent.com/mongodb-js/mongoose/master/docs/images/mongoose5_62x30_transparent.png" },
+      ],
+      Tools: [
+        { name: "Git", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg" },
+        { name: "GitHub", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" },
+        { name: "MySQL Workbench", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg" },
+        { name: "PowerShell", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powershell.svg" },
+      ],
+      Services: [
+        { name: "Firebase (Authentication)", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/firebase.svg" },
+        { name: "Cloudinary (Image Management)", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudinary.svg" },
+        { name: "Stripe (Payments)", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/stripe.svg" },
+        { name: "Socket.IO (Real-Time Communication)", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/socketdotio.svg" },
+      ],
+      Other: [
+        { name: "Microsoft Word", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftword.svg" },
+        { name: "Microsoft Excel", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftexcel.svg" },
+        { name: "Figma", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg" },
+        { name: "Trello", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/trello.svg" },
+        { name: "Canva", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg" },
+      ],
+    };
+
+    const certifications = [
+      {
+        title: "Full Stack JavaScript Web Developer",
+        issuer: "Reboot Kamp (RBK)",
+        date: "October 2023",
+        image: "./assets/images/rbk.png"
+      },
+      {
+        title: "JavaScript Algorithms",
+        issuer: "freeCodeCamp",
+        date: "March 2024",
+        image: "./assets/images/code.png"
+      },
+    ];
+
+    const Navbar = () => {
+      const [isOpen, setIsOpen] = React.useState(false);
+      return (
+        <nav class="bg-gray-900 border-b border-neon-pink sticky top-0 z-10">
+          <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-neon-pink">Oumaima Aouini</h1>
+            <div class="md:hidden">
+              <img src="assets/mee.jpg" alt="Mee Image" />
+              <button 
+                onClick={() => setIsOpen(!isOpen)} 
+                class="text-gray-100 hover:text-neon-pink focus:text-neon-pink focus:outline-none transition-colors"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                </svg>
+              </button>
+            </div>
+            <ul class={`md:flex md:space-x-6 ${isOpen ? 'block' : 'hidden'} absolute md:static bg-gray-900 w-full md:w-auto left-0 top-16 p-4 md:p-0 transition-all duration-300`}>
+              <li><a href="#about" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">About</a></li>
+              <li><a href="#skills" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">Skills</a></li>
+              <li><a href="#projects" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">Projects</a></li>
+              <li><a href="#figma-designs" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">Figma Designs</a></li>
+              <li><a href="#education" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">Education</a></li>
+              <li><a href="#certifications" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">Certifications</a></li>
+              <li><a href="#contact" class="block text-gray-100 hover:text-neon-pink focus:text-neon-pink py-2 transition-colors">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      );
+    };
+
+    const Hero = () => {
+      return (
+        <section class="bg-gradient-to-br from-gray-900 to-gray-800 py-24 text-center">
+          <div class="container mx-auto px-6 animate-glow">
+            <img 
+              src="/assets/mee.jpg"
+              alt="Oumaima Aouini"
+              class="w-40 h-45 rounded-full mx-auto mb-6 border-4 border-neon-pink"
+            />
+            <h2 class="text-4xl md:text-5xl font-bold text-neon-pink mb-4">Oumaima Aouini</h2>
+            <p class="text-xl text-gray-300 mb-6">JavaScript Developer </p>
+            <a 
+              href="#contact" 
+              class="bg-neon-pink text-gray-900 px-6 py-3 rounded-full hover:bg-neon-pink/80 focus:bg-neon-pink/80 transition-colors"
+            >
+              Contact Me
+            </a>
+          </div>
+        </section>
+      );
+    };
+
+    const About = () => {
+      return (
+        <section id="about" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg border border-neon-blue animate-slide-up">
+              <h2 class="text-3xl font-bold text-neon-blue mb-6 text-center">About Me</h2>
+              <p class="text-gray-300 leading-relaxed">
+                Results-driven Software Developer skilled in full-stack development and agile methodologies. Proven ability to deliver scalable solutions and lead teams. Seeking a challenging role to drive software innovation.
+              </p>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Skills = () => {
+      return (
+        <section id="skills" class="py-20 bg-gray-900">
+          <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-neon-blue mb-8 text-center animate-slide-up">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Object.entries(skills).map(([category, items], index) => (
+                <div key={category} class="bg-gray-800 p-6 rounded-lg border border-neon-pink hover:border-neon-pink/50 transition-colors animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                  <h3 class="text-xl font-semibold text-gray-100 mb-4">{category}</h3>
+                  <ul class="space-y-2">
+                    {items.map((skill) => (
+                      <li key={skill.name} class="flex items-center text-gray-300">
+                        <img src={skill.logo} alt={`${skill.name} logo`} class="w-6 h-6 mr-2" />
+                        {skill.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const ProjectCard = ({ project, index }) => {
+      return (
+        <div class="bg-gray-800 p-6 rounded-lg border border-neon-blue hover:border-neon-blue/50 transition-colors animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+          <img 
+            src={project.demoImage}
+            alt={`${project.title} Demo`}
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold text-neon-pink mb-2">{project.title}</h3>
+          <p class="text-gray-400 mb-4">{project.date}</p>
+          <ul class="list-disc list-inside text-gray-300 mb-4">
+            {project.description.map((desc, i) => (
+              <li key={i}>{desc}</li>
+            ))}
+          </ul>
+          <p class="text-gray-300 mb-4"><strong>Technologies:</strong> {project.technologies.join(", ")}</p>
+          <a href={project.demoLink} target="_blank" class="text-neon-blue hover:underline">View Demo</a>
+        </div>
+      );
+    };
+
+    const Projects = () => {
+      return (
+        <section id="projects" class="py-20">
+          <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-neon-blue mb-8 text-center animate-slide-up">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project, index) => (
+                <ProjectCard key={index} project={project} index={index}
+
+ />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const FigmaProjectCard = ({ figmaProject, index }) => {
+      return (
+        <div class="bg-gray-800 p-6 rounded-lg border border-neon-pink hover:border-neon-pink/50 transition-colors animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+          <img 
+            src={figmaProject.screenshot}
+            alt={`${figmaProject.title} Screenshot`}
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold text-neon-pink mb-2">{figmaProject.title}</h3>
+          <p class="text-gray-400 mb-4">{figmaProject.date}</p>
+          <p class="text-gray-300 mb-4">{figmaProject.description}</p>
+          <a href={figmaProject.figmaLink} target="_blank" class="text-neon-blue hover:underline">View in Figma</a>
+        </div>
+      );
+    };
+
+    const FigmaDesigns = () => {
+      return (
+        <section id="figma-designs" class="py-20 bg-gray-900">
+          <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-neon-blue mb-8 text-center animate-slide-up">Figma Designs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {figmaProjects.map((figmaProject, index) => (
+                <FigmaProjectCard key={index} figmaProject={figmaProject} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const CertificationCard = ({ cert, index }) => {
+      return (
+        <div class="bg-gray-800 p-6 rounded-lg border border-neon-pink hover:border-neon-pink/50 transition-colors animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+          <img 
+            src={cert.image}
+            alt={`${cert.title} Certificate`}
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold text-gray-100 mb-2">{cert.title}</h3>
+          <p class="text-gray-400 mb-2">{cert.issuer}</p>
+          <p class="text-gray-400">{cert.date}</p>
+        </div>
+      );
+    };
+
+    const Certifications = () => {
+      return (
+        <section id="certifications" class="py-20 bg-gray-900">
+          <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-neon-blue mb-8 text-center animate-slide-up">Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {certifications.map((cert, index) => (
+                <CertificationCard key={index} cert={cert} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Education = () => {
+      return (
+        <section id="education" class="py-20">
+          <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-neon-blue mb-8 text-center animate-slide-up">Education</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+              <div class="bg-gray-800 p-6 rounded-lg border border-neon-pink animate-slide-up">
+                <h3 class="text-xl font-semibold text-gray-100">Baccalaureate in Economics and Management</h3>
+                <p class="text-gray-400">2018 - 2019</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Contact = () => {
+      return (
+        <section id="contact" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg border border-neon-blue animate-slide-up">
+              <h2 class="text-3xl font-bold text-neon-blue mb-6 text-center">Contact Me</h2>
+              <div class="text-gray-300 space-y-4 text-center">
+                <p>Email: <a href="mailto:aouinioumaima1@gmail.com" class="text-neon-pink hover:underline">aouinioumaima1@gmail.com</a></p>
+                <p>Phone: <a href="tel:+57227906" class="text-neon-pink hover:underline">57227906</a></p>
+                <p>GitHub: <a href="https://github.com/aouini-oumaima" target="_blank" class="text-neon-pink hover:underline">aouini-oumaima</a></p>
+                <p>Location: Ariana</p>
+
+                <p class="mt-6">Soft Skills: Team Collaboration, Problem-Solving, Effective Communication, Time Management, Adaptability</p>
+                <p>Languages: English, Arabic, French</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Footer = () => {
+      return (
+        <footer class="bg-gray-900 border-t border-neon-pink py-6 text-center">
+          <p class="text-gray-300">© 2025 Oumaima Aouini. All rights reserved.</p>
+        </footer>
+      );
+    };
+
+    const App = () => {
+      return (
+        <div>
+          <Navbar />
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <FigmaDesigns />
+          <Education />
+          <Certifications />
+          <Contact />
+          <Footer />
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+
+  <style>
+    @keyframes glow {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+    @keyframes slide-up {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .animate-glow {
+      animation: glow 2s ease-in-out infinite;
+    }
+    .animate-slide-up {
+      animation: slide-up 0.6s ease-out;
+    }
+    .border-neon-pink {
+      border-color: #ff2d95;
+    }
+    .text-neon-pink {
+      color: #ff2d95;
+    }
+    .bg-neon-pink {
+      background-color: #ff2d95;
+    }
+    .border-neon-blue {
+      border-color: #00f0ff;
+    }
+    .text-neon-blue {
+      color: #00f0ff;
+    }
+  </style>
+</body>
+</html>
